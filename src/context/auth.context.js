@@ -3,10 +3,9 @@ import React, {
   useEffect,
   useCallback,
   useContext,
-  useState,
+  
 } from 'react';
-import { authService } from '../../../../../Downloads/rn-auth-app/src/services/authService';
-
+import { authService } from '../services/authService';
 export const AuthenticationContext = createContext();
 
 const initialState = {
@@ -104,7 +103,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ ...state, login, signup, logout }}>
+    <AuthContext.Provider value={{ ...state, login, signUp, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -102,4 +102,3 @@ export const Shadows = {
   },
 };
 
-export default { Colors, Typography, Spacing, Radius, Shadows };
