@@ -1,12 +1,14 @@
 import React, {
   createContext,
+  useReducer,
   useEffect,
   useCallback,
   useContext,
   
 } from 'react';
 import { authService } from '../services/authService';
-export const AuthenticationContext = createContext();
+
+
 
 const initialState = {
   user: null,
@@ -15,7 +17,7 @@ const initialState = {
   status: 'idle',
 };
 
-const AuthReducer = (action, state) => {
+const AuthReducer = (state, action) => {
   switch (action.type) {
     case 'AUTH_LOADING':
       return { ...state, status: 'loading', error: null };
@@ -38,7 +40,7 @@ const AuthReducer = (action, state) => {
     case 'AUTH_LOGOUT':
       return {
         ...initialState,
-        status: 'unauhenticated',
+        status: 'unauthenticated',
       };
     case 'SESSION_RESTORED':
       return {
@@ -50,15 +52,20 @@ const AuthReducer = (action, state) => {
     case 'SESSION_NOT_FOUND':
       return {
         ...state,
-        state: 'unauthenticated',
+        status: 'unauthenticated',
       };
     default:
       return state;
   }
 };
+
+
 const AuthContext = createContext(null);
 
+
 export const AuthProvider = ({ children }) => {
+      const [state, dispatch] = useReducer(AuthReducer, initialState);
+
   useEffect(() => {
     (async () => {
       const session = await authService.getSession();

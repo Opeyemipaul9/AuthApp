@@ -1,8 +1,9 @@
-import React from 'react'
+import React from 'react',
+import {View , Text} from 'react-native';
 
 export const Button = () => {
   return (
-    <div>Button</div>
+    <View><Text>JAMESON</Text></View>
   )
 }
 

@@ -16,17 +16,17 @@ const saveUsers = async users => {
 
 const AuthService = {
   async signup({ name, email, password }) {
-    delay();
+    await delay();
     const users = await getUsers();
 
-    if (users.find(u => u.email.toLowercase() === email.toLowercase())) {
+    if (users.find(u => u.email.toLowerCase() === email.toLowerCase())) {
       throw new Error('An account witht tis email already exists');
     }
 
     const user = {
       id: Math.random().toString(36).slice(2),
       name: name.trim(),
-      emai: email.toLowercase().trim(),
+      email: email.toLowerCase().trim(),
       initials: name
         .trim()
         .split(' ')
@@ -35,7 +35,7 @@ const AuthService = {
         .toUpperCase()
         .slice(0, 2),
 
-      createdAt: new Date().getDate.toString(),
+      createdAt: new Date().toISOString(),
     };
 
     await saveUsers([...users, { ...user, password }]);
@@ -49,7 +49,7 @@ const AuthService = {
     const users = await getUsers();
     const found = users.find(
       u =>
-        u.email.toLowercase() === email.toLowercase() &&
+        u.email.toLowerCase() === email.toLowerCase() &&
         u.password === password,
     );
     if (!found) throw new Error('Invalid email or password');
@@ -87,3 +87,5 @@ const AuthService = {
     return btoa(JSON.stringify(payload));
   },
 };
+
+export const authService = AuthService;

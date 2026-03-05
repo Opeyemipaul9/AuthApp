@@ -2,7 +2,7 @@ import React from 'react'
 
 const HomeScreen = () => {
   return (
-    <div>HomeScreen</div>
+    <View>HomeScreen</View>
   )
 }
 

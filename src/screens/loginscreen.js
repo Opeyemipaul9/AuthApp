@@ -1,10 +1,10 @@
-import React from 'react';
+import React,{useRef} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
-  Platfrom,
+  Platform,
   TouchableOpacity,
   KeyboardAvoidingView,
 } from 'react-native';
@@ -23,7 +23,7 @@ const RULES = {
   password: valid.required('Password'),
 };
 
-const loginscreen = ({ navigation }) => {
+export const Loginscreen = ({ navigation }) => {
   const { login, status, error } = useAuth();
   const isLoading = status === 'loading';
   const passwordRef = useRef(null);
@@ -38,7 +38,7 @@ const loginscreen = ({ navigation }) => {
     <SafeAreaView style={styles.safe} edges={['top', 'bottom']}>
       <KeyboardAvoidingView
         style={styles.flex}
-        behavior={Platfrom.OS === 'ios' ? 'padding' : undefined}
+        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}
       >
         <ScrollView
@@ -48,7 +48,7 @@ const loginscreen = ({ navigation }) => {
         >
           <View style={styles.logoRow}>
             <View style={styles.logoMark}>
-              <Text style={styles.logoMarket}>A</Text>
+              <Text style={styles.logoMarkText}>A</Text>
             </View>
             <Text style={styles.logoName}>HANJO</Text>
           </View>
@@ -102,7 +102,7 @@ const loginscreen = ({ navigation }) => {
           <View style={styles.footer}>
             <Text style={styles.footerText}>Don't have an account ?</Text>
             <TouchableOpacity
-              onPress={() => naviggation.navigate('signup')}
+              onPress={() => navigation.navigate('signup')}
               activeOpacity={0.7}
             >
               <Text style={styles.footerLink}> Create One</Text>
@@ -197,3 +197,5 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
+
+export default Loginscreen;
