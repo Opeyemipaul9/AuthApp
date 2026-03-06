@@ -20,7 +20,7 @@ import React, { useEffect, useState , useCallback } from 'react';
 //   return user;
 // };
 
-export function useForm (initialValues, validationRules = {}) {
+export const  useForm =  (initialValues, validationRules = {})=> {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});

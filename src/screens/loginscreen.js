@@ -48,9 +48,9 @@ export const Loginscreen = ({ navigation }) => {
         >
           <View style={styles.logoRow}>
             <View style={styles.logoMark}>
-              <Text style={styles.logoMarkText}>A</Text>
+              <Text style={styles.logoMarkText}>CE</Text>
             </View>
-            <Text style={styles.logoName}>HANJO</Text>
+            <Text style={styles.logoName}>HANJO  RADIOS </Text>
           </View>
           <Text style={styles.title}>Welcome back </Text>
           <Text style={styles.subtitle}>Sign into your account </Text>
@@ -117,7 +117,7 @@ export const Loginscreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   safe: {
     flex: 1,
-    backgroundColor: Colors.bgBase,
+    backgroundColor: 'yellow',
   },
   flex: { flex: 1 },
   scroll: {

@@ -31,7 +31,7 @@ export const AppNavigator = () => {
         <Stack.Screen
           name="login"
           options={{ headerShown: false }}
-          components={loginscreen}
+          components={Loginscreen}
         />
         <Stack.Screen
           name="signup"
